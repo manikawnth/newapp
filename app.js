@@ -21,6 +21,6 @@ app.post('/post',function(req,res){
 	res.end();
 });
 
-app.listen(8080,function(){
-	console.log('listening on port 8080');
+app.listen(process.env.PORT || 3031,function(){
+	console.log('listening on port 3031');
 });
