@@ -5,9 +5,10 @@ var bodyParser = require('body-parser');
 var	path	= require('path');
 
 app.use(express.static(__dirname));
-app.use(bodyParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-var options = {root:path.resolve(__dirname,'./client')}
+var options = {root:path.resolve(__dirname,'./client/')}
 
 app.get('/',function(req,res){
 	res.sendFile('./login.html',options,function(err){
@@ -16,9 +17,12 @@ app.get('/',function(req,res){
 
 });
 
-app.post('/post',function(req,res){
+app.post('/login',function(req,res){
 	console.log(req.body);
-	res.end();
+	res.sendFile('./main.html',options,function(err){
+		console.log(res.statusCode);
+	});
+
 });
 
 app.listen(process.env.PORT || 3031,function(){
