@@ -17,7 +17,7 @@ app.get('/',function(req,res){
 
 });
 
-app.post('/login',function(req,res){
+app.post('/main',function(req,res){
 	console.log(req.body);
 	res.sendFile('./main.html',options,function(err){
 		console.log(res.statusCode);
